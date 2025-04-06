@@ -1,3 +1,4 @@
+import pickle
 import neat
 import pygame
 import os
@@ -211,8 +212,9 @@ def run(config_path):
     pop.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     pop.add_reporter(stats)
-    pop.run(eval_genomes, 50)
-
+    winner = pop.run(eval_genomes, 50)
+    with open("best_genome.pkl", "wb") as f:
+        pickle.dump(winner, f)
 
 if __name__ == "__main__":
     local_dir = os.path.dirname(__file__)
