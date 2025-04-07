@@ -212,7 +212,7 @@ def run(config_path):
     pop.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     pop.add_reporter(stats)
-    winner = pop.run(eval_genomes, 50)
+    winner = pop.run(eval_genomes, 100)
     with open("best_genome.pkl", "wb") as f:
         pickle.dump(winner, f)
 
